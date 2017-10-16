@@ -16,5 +16,5 @@
 		}
 	],
 	"rootPath": "padel-go",
-	"heroku.goVersion": "1.9.1"
+	"heroku.goVersion": "go1.9.1"
 }
