@@ -1,5 +1,6 @@
 {
 	"comment": "",
+	"heroku.goVersion": "1.9.1",
 	"ignore": "test",
 	"package": [
 		{
@@ -15,6 +16,5 @@
 			"revisionTime": "2017-09-03T10:20:28Z"
 		}
 	],
-	"rootPath": "padel-go",
-	"heroku.goVersion": "go1.9.1"
+	"rootPath": "github.com/joserobleda/padel-go-bot"
 }
