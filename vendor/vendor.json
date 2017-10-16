@@ -1,6 +1,19 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"checksumSHA1": "rL5tporU1CKLFALFXg6acHJTvA0=",
+			"path": "github.com/headzoo/surf",
+			"revision": "362d36475b4dc845ecdbb02e185a32f56a0c53d7",
+			"revisionTime": "2017-09-01T12:27:57Z"
+		},
+		{
+			"checksumSHA1": "+SDoT1W1MPeEA8PkLkK019Cob/E=",
+			"path": "github.com/yanzay/tbot",
+			"revision": "d6950ed99580cc5a5620530931a1586f964fc3f9",
+			"revisionTime": "2017-09-03T10:20:28Z"
+		}
+	],
 	"rootPath": "padel-go"
 }
