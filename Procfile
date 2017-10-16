@@ -1,1 +1,1 @@
-worker: go run *.go
+worker: bin/padel-go-bot
