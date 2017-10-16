@@ -15,5 +15,6 @@
 			"revisionTime": "2017-09-03T10:20:28Z"
 		}
 	],
-	"rootPath": "padel-go"
+	"rootPath": "padel-go",
+	"heroku.goVersion": "1.9.1"
 }
