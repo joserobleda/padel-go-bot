@@ -1,3 +1,6 @@
 {
-    "comment": ""
+	"comment": "",
+	"ignore": "test",
+	"package": [],
+	"rootPath": "padel-go"
 }
