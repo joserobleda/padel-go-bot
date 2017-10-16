@@ -3,7 +3,7 @@ package main
 import (
   "fmt"
   "os"
-	"gopkg.in/headzoo/surf.v1"
+  "github.com/headzoo/surf"
   "github.com/headzoo/surf/browser"
   "github.com/headzoo/surf/agent"
 )

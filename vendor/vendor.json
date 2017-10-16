@@ -1,8 +1,25 @@
 {
 	"comment": "",
-	"heroku.goVersion": "1.9.1",
 	"ignore": "test",
 	"package": [
+		{
+			"checksumSHA1": "LlvQPCCJxa/4kNQDPBM5fZrtAnU=",
+			"path": "github.com/PuerkitoBio/goquery",
+			"revision": "1a71cc719d0d5b9e4f14ae072bef08b576b0bab5",
+			"revisionTime": "2017-10-07T14:12:28Z"
+		},
+		{
+			"checksumSHA1": "2rWSos1D+xqNSGkvEMOG3pntod8=",
+			"path": "github.com/andybalholm/cascadia",
+			"revision": "349dd0209470eabd9514242c688c403c0926d266",
+			"revisionTime": "2016-12-24T14:14:13Z"
+		},
+		{
+			"checksumSHA1": "HiYtApVLE8OsNYUW5tB7/9Ys8gI=",
+			"path": "github.com/go-telegram-bot-api/telegram-bot-api",
+			"revision": "846d467e14e674846aea543559900b7832e0b435",
+			"revisionTime": "2017-10-07T17:26:42Z"
+		},
 		{
 			"checksumSHA1": "rL5tporU1CKLFALFXg6acHJTvA0=",
 			"path": "github.com/headzoo/surf",
@@ -10,10 +27,76 @@
 			"revisionTime": "2017-09-01T12:27:57Z"
 		},
 		{
-			"checksumSHA1": "+SDoT1W1MPeEA8PkLkK019Cob/E=",
+			"checksumSHA1": "+EQ7D33IDpeetHCiqKwdv767pvY=",
+			"path": "github.com/headzoo/surf/agent",
+			"revision": "362d36475b4dc845ecdbb02e185a32f56a0c53d7",
+			"revisionTime": "2017-09-01T12:27:57Z"
+		},
+		{
+			"checksumSHA1": "PIDp7GEJtTOtJuAaJn8xiZyJK6M=",
+			"path": "github.com/headzoo/surf/browser",
+			"revision": "362d36475b4dc845ecdbb02e185a32f56a0c53d7",
+			"revisionTime": "2017-09-01T12:27:57Z"
+		},
+		{
+			"checksumSHA1": "hRnSyUe+i0ALGC+YBWyTYT04gR4=",
+			"path": "github.com/headzoo/surf/errors",
+			"revision": "362d36475b4dc845ecdbb02e185a32f56a0c53d7",
+			"revisionTime": "2017-09-01T12:27:57Z"
+		},
+		{
+			"checksumSHA1": "1rvqZZuhpwVudoMjyYSlwF5/5bU=",
+			"path": "github.com/headzoo/surf/jar",
+			"revision": "362d36475b4dc845ecdbb02e185a32f56a0c53d7",
+			"revisionTime": "2017-09-01T12:27:57Z"
+		},
+		{
+			"checksumSHA1": "uczU4npsD9cPr1/P1eNe7A+0Zxs=",
+			"path": "github.com/headzoo/surf/util",
+			"revision": "362d36475b4dc845ecdbb02e185a32f56a0c53d7",
+			"revisionTime": "2017-09-01T12:27:57Z"
+		},
+		{
+			"checksumSHA1": "t8jzPFIv4DNACv+cuZoigNmjPLQ=",
+			"path": "github.com/technoweenie/multipartstreamer",
+			"revision": "a90a01d73ae432e2611d178c18367fbaa13e0154",
+			"revisionTime": "2013-10-20T00:18:33Z"
+		},
+		{
+			"checksumSHA1": "uVrl2uusMCI0K+07vazfTNncP5M=",
+			"path": "github.com/yanzay/log",
+			"revision": "87352bb235060cca8427c8f9fdd68c83b38ba461",
+			"revisionTime": "2016-04-19T14:48:09Z"
+		},
+		{
+			"checksumSHA1": "zsd6cRtN2xJ2THWuOCZxSNed12U=",
 			"path": "github.com/yanzay/tbot",
-			"revision": "d6950ed99580cc5a5620530931a1586f964fc3f9",
-			"revisionTime": "2017-09-03T10:20:28Z"
+			"revision": "cd7975976e30e06711824734b3fd18b020d14335",
+			"revisionTime": "2017-10-13T16:19:05Z"
+		},
+		{
+			"checksumSHA1": "/oyl1xFbOynC69qFClc0xUPGnR0=",
+			"path": "github.com/yanzay/tbot/internal/adapter",
+			"revision": "cd7975976e30e06711824734b3fd18b020d14335",
+			"revisionTime": "2017-10-13T16:19:05Z"
+		},
+		{
+			"checksumSHA1": "YJvnK1xGZgyI8WZOBq0xQpw89ik=",
+			"path": "github.com/yanzay/tbot/model",
+			"revision": "cd7975976e30e06711824734b3fd18b020d14335",
+			"revisionTime": "2017-10-13T16:19:05Z"
+		},
+		{
+			"checksumSHA1": "/PGQlVbw8jILX3tLQaYAg6bTAFI=",
+			"path": "golang.org/x/net/html",
+			"revision": "a04bdaca5b32abe1c069418fb7088ae607de5bd0",
+			"revisionTime": "2017-10-03T05:09:24Z"
+		},
+		{
+			"checksumSHA1": "uMRr2bnIJS+9Xm0FqMBYUTzaSGs=",
+			"path": "golang.org/x/net/html/atom",
+			"revision": "a04bdaca5b32abe1c069418fb7088ae607de5bd0",
+			"revisionTime": "2017-10-03T05:09:24Z"
 		}
 	],
 	"rootPath": "github.com/joserobleda/padel-go-bot"
