@@ -11,8 +11,8 @@ func ConfigHandler(message *tbot.Message) {
 
   if message.Vars["time"] == "" {
     buttons := [][]string{
-      {"play Monday", "play Tuesday", },
-      {"play Wednesday", "play Thursday"},
+      {"/play Monday", "/play Tuesday", },
+      {"/play Wednesday", "/play Thursday"},
     }
 
     message.ReplyKeyboard("What day?", buttons)
