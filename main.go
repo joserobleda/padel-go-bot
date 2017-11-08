@@ -6,7 +6,6 @@ import (
 	"github.com/headzoo/surf/browser"
 	"github.com/yanzay/tbot"
 	"fmt"
-	"time"
 )
 
 var (
@@ -18,12 +17,6 @@ var (
 
 func main() {
 	fmt.Println("Starting...")
-
-	_, err := time.LoadLocation("Europe/Madrid")
-	if err != nil {
-		log.Fatal(err.Error())
-	}
-
 	token := os.Getenv("TELEGRAM_TOKEN")
 
 	// Create new telegram bot server using token
