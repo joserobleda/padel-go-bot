@@ -9,7 +9,7 @@ import (
   "github.com/headzoo/surf/agent"
 )
 
-func login() *browser.Browser {
+func login(reason string) *browser.Browser {
 	bow := surf.NewBrowser()
   bow.SetUserAgent(agent.Chrome())
 
@@ -21,7 +21,7 @@ func login() *browser.Browser {
   username := os.Getenv("LOGIN")
   pass := os.Getenv("PASSWORD")
 
-  fmt.Println("Login with username: " + username + " and password: " + pass);
+  fmt.Println("Login with username: " + username + " ["+ reason +"]");
 
   // Log in to the site.
   fm, _ := bow.Form("form#customerLogin")
@@ -33,9 +33,7 @@ func login() *browser.Browser {
 
   span := bow.Dom().Find("span.metadataSubtitle");
   
-  if span.Length() == 1 {
-    fmt.Println("Login done")
-  } else {
+  if span.Length() != 1 {
     log.Fatal("Cannot login")
   }
 

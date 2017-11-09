@@ -35,7 +35,7 @@ func autoReserve(server *tbot.Server) {
 			server.Send(chatId, msg);
 		}
 
-		bro = login();
+		bro = login("auto-reserve");
 		date, _ = time.Parse("2006-01-02 15:04", newAvailableDate.Format("2006-01-02") +" "+ hourToPlay)
 
 		for _, timeRange := range TimesRanges {

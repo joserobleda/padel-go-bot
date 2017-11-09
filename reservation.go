@@ -45,7 +45,7 @@ func getLatestReservation() Reservation {
 func getReservations() []Reservation {
   slice := make([]Reservation, 0)
 
-  bow := login()
+  bow := login("reservations")
   err := bow.Open("https://canaldeisabel.padelclick.com/bookings/customerzone/reservations")
   if err != nil {
   	panic(err)

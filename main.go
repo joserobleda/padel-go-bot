@@ -25,7 +25,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	bro = login();	
+	bro = login("initial")
 	dayOfWeek = "Monday"
 	hourToPlay = "18:00"
 

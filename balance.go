@@ -24,7 +24,7 @@ func BalanceHandler(message *tbot.Message) {
 }
 
 func getBalance() (error, float64) {
-  bow := login()
+  bow := login("balance")
   err := bow.Open("https://canaldeisabel.padelclick.com/customerzone/vouchers")
   if err != nil {
   	panic(err)
