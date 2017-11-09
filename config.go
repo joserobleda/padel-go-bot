@@ -28,7 +28,7 @@ func ConfigDateHandler(message *tbot.Message) {
   }
 
   msg := "Cool! I'll will reserve for " + dayOfWeek + "s. Do you want to play at "+ hourToPlay +"?";
-  message.ReplyKeyboard(msg, buttons)
+  message.ReplyKeyboard(msg, buttons, tbot.OneTimeKeyboard)
 }
 
 func ConfigTimeHandler(message *tbot.Message) {
@@ -41,7 +41,7 @@ func ConfigTimeHandler(message *tbot.Message) {
       {"/at 18:00", "/at 18:30"},
     }
 
-    message.ReplyKeyboard("What hour?", buttons)
+    message.ReplyKeyboard("What hour?", buttons, tbot.OneTimeKeyboard)
 
     return;
   }
