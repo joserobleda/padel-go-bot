@@ -5,6 +5,8 @@ import (
 	"strconv"
   "strings"
   "time"
+  "errors"
+  "github.com/goodsign/monday"
   "github.com/PuerkitoBio/goquery"
   "github.com/yanzay/tbot"
 )
@@ -13,27 +15,40 @@ func ReservationHandler(message *tbot.Message) {
   // store latest message as a global (OMG!)
   chatId = message.ChatID;
 
-  rsvp := getLatestReservation();
+  message.Reply("Let me see...")
 
-  if (rsvp.status == "Anulada") {
+  err, rsvp := getLatestActiveReservation();
+
+  if err != nil {
     message.Reply("Ooops, you don't have any active reservations");
     
     return;
   }
 
-  msg := "Your latest reservation is for "+ rsvp.date +" in "+ rsvp.track + "\n"
+  msg := "Your latest reservation is for *"+ rsvp.date.Format("02-01-2006") +" at "+ rsvp.date.Format("15:04") + "*\n"
+  msg += "Track: " + rsvp.track +" - "
   msg += "Duration: " + rsvp.duration.String() +" - "
   msg += "Price: " + strconv.FormatFloat(rsvp.price, 'f', 2, 64) + "€" +"\n"
 
-  message.Reply(msg)
+  message.Reply(msg, tbot.WithMarkdown)
 }
 
 type Reservation struct {
-  date string
+  date time.Time
   price float64
   track string
   duration time.Duration
   status string
+}
+
+func getLatestActiveReservation() (error, Reservation) {
+  rsvp := getLatestReservation();
+
+  if (rsvp.status == "Anulada") {
+    return errors.New("No active reservations"), Reservation{};
+  }
+
+  return nil, rsvp;
 }
 
 func getLatestReservation() Reservation {
@@ -50,6 +65,8 @@ func getReservations() []Reservation {
   if err != nil {
   	panic(err)
   }
+
+  location, _ := time.LoadLocation("Europe/Madrid")
 
   bow.Dom().Find(".czrow").Each(func(_ int, s *goquery.Selection) {
     dateNode := s.Find(".dateHeader")
@@ -77,7 +94,11 @@ func getReservations() []Reservation {
 
     price, _ := strconv.ParseFloat(strings.TrimSpace(priceStr), 64)
 
-    slice = append(slice, Reservation{dateTimeStr, price, trackStr, duration, statusStr})
+    dparts := regexp.MustCompile("[,\\s]").Split(dateTimeStr, 10);
+		parseableDateStr := dparts[4]+" "+dparts[2]+" "+dparts[9]+":00 "+dparts[6]
+		parsedDate, _ := monday.ParseInLocation("January _2 15:04:05 2006", parseableDateStr, location, monday.LocaleEsES) 
+
+    slice = append(slice, Reservation{parsedDate, price, trackStr, duration, statusStr})
   })
 
   return slice
