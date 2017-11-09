@@ -19,28 +19,52 @@ func autoReserve(server *tbot.Server) {
 		newAvailableDay := newAvailableDate.Weekday().String();
 
 		if (newAvailableDay != dayOfWeek) {
-			// fmt.Println("Tracks are not ready yet for next " + dayOfWeek)
+			fmt.Println("Tracks are not ready yet for next " + dayOfWeek)
 			continue
 		}
 
-		if (currentTime != "00:00:02") {
+		if (currentTime != "00:00:01") {
 			// fmt.Println(currentTime + " is not the right time to reserve")
 			continue
 		}
 
-		bro = login();
-		reserveDate := newAvailableDate.Format("02-01-2006") + " " + hourToPlay
-		startMessage := "Begin reservation for next " + dayOfWeek + " at " + hourToPlay + " (" + reserveDate + ")";
-
-		fmt.Println(startMessage);
 		if chatId != 0 {
-			server.Send(chatId, startMessage);
+			msg := "Hi there, it's time!\n"
+			msg += "I'm going to reserve for next " + dayOfWeek + " ("+ newAvailableDate.Format("2006-01-02") +")"
+
+			server.Send(chatId, msg);
 		}
 
-		resultMessage := reserve(bro, reserveDate)
-		fmt.Println(resultMessage);
-		if chatId != 0 {
-			server.Send(chatId, resultMessage);
+		bro = login();
+		date, _ = time.Parse("2006-01-02 15:04", newAvailableDate.Format("2006-01-02") + " " + hourToPlay)
+
+		for _, timeRange := range TimesRanges {
+			rdate := date.Add(timeRange)
+
+			reserveTimeStr := rdate.Format("15:04")
+			startMessage := "I'm trying to reserve for "+ reserveTimeStr + "...";
+
+			fmt.Println(startMessage);
+			if chatId != 0 {
+				server.Send(chatId, startMessage);
+			}
+
+			reserveDateStr := rdate.Format("02-01-2006 15:04")
+			resultMessage, resultCode := reserve(bro, reserveDateStr)
+
+			fmt.Println(resultMessage);
+			if chatId != 0 {
+				server.Send(chatId, resultMessage);
+
+				if resultCode == 0 {
+					server.Send(chatId, "Enjoy!! and remember to add the "+ reserveDateStr + " to your calendar!");
+				}
+			}
+
+			// 1 = no available tracks, so try again with next time range
+			if resultCode != 1 {
+				break;
+			}
 		}
 	}
 }

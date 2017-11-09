@@ -6,11 +6,11 @@ import (
   "fmt"
 )
 
-func reserve(bro *browser.Browser, date string) (string) {
+func reserve(bro *browser.Browser, date string) (string, int) {
   name, resource := checkDate(bro, date)
 
   if resource == "" {
-    return "No hay pistas";
+    return "Oh! Looks like there are no available tracks! Sorry!!", 1;
   }
   // fmt.Println(bro.Body());
 
@@ -23,7 +23,7 @@ func reserve(bro *browser.Browser, date string) (string) {
   paymentfm, err := bro.Form("form#paymentForm")
   if (err != nil) {
     fmt.Println(bro.Body());
-    return err.Error();
+    return err.Error(), 2;
   }
 
   paymentfm.Input("idPaymentMethod", "968")
@@ -32,8 +32,8 @@ func reserve(bro *browser.Browser, date string) (string) {
   }
 
   if strings.TrimSpace(bro.Title()) == "Reserva Confirmada" {
-    return "Pista " + name + " reservada!";
+    return "Track " + name + " reserved!", 0;
   }
   
-  return "No he podido reservar! Parece que no hay pasta o algo así!";
+  return "I can't reserve! Maybe you need to put more money? Sorry!!", 3;
 }

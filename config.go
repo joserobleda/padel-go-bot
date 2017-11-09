@@ -1,15 +1,15 @@
 package main
 
 import (
-  "strings"
+	"strings"
   "github.com/yanzay/tbot"
 )
 
-func ConfigHandler(message *tbot.Message) {
+func ConfigDateHandler(message *tbot.Message) {
   // store latest message as a global (OMG!)
   chatId = message.ChatID;
 
-  if message.Vars["time"] == "" {
+  if message.Vars["date"] == "" {
     buttons := [][]string{
       {"/play Monday", "/play Tuesday", },
       {"/play Wednesday", "/play Thursday"},
@@ -20,15 +20,50 @@ func ConfigHandler(message *tbot.Message) {
     return;
   }
 
-  s := strings.Split(message.Vars["time"], " ")
+  dayOfWeek = message.Vars["date"]
 
-  if len(s) > 0 {
-    dayOfWeek = strings.Title(strings.ToLower(s[0]));
+  buttons := [][]string{
+    {"/at 17:00", "/at 17:30" },
+    {"/at 18:00", "/at 18:30"},
   }
 
-  if len(s) > 1 {
-    hourToPlay = s[1];
+  msg := "Cool! I'll will reserve for " + dayOfWeek + "s. Do you want to play at "+ hourToPlay +"?";
+  message.ReplyKeyboard(msg, buttons)
+}
+
+func ConfigTimeHandler(message *tbot.Message) {
+  // store latest message as a global (OMG!)
+  chatId = message.ChatID;
+
+  if message.Vars["time"] == "" {
+    buttons := [][]string{
+      {"/at 17:00", "/at 17:30" },
+      {"/at 18:00", "/at 18:30"},
+    }
+
+    message.ReplyKeyboard("What hour?", buttons)
+
+    return;
   }
 
-  message.Reply("Cool! I'll will reserve for " + dayOfWeek + "s at " + hourToPlay)
+  hourToPlay = message.Vars["time"];
+
+  message.Reply("Cool! Consider it done!")
+
+  ConfigShowHandler(message);
+}
+
+func ConfigShowHandler(message *tbot.Message) {
+  // store latest message as a global (OMG!)
+  chatId = message.ChatID;
+
+  ndate := nextDate(dayOfWeek, hourToPlay);
+  tdate := ndate.AddDate(0, 0, -7);
+
+  msgs := []string {
+    "I'll will reserve for "+ dayOfWeek +"s at "+ hourToPlay +". Next available date is "+ ndate.Format("02-01-2006") +".",
+    "And don't worry, I'll automatically perform the reservation on "+ tdate.Format("02-01-2006") +"'s night",
+  }
+
+  message.Reply(strings.Join(msgs, "\n"))
 }

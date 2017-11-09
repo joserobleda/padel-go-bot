@@ -30,8 +30,11 @@ func main() {
 	hourToPlay = "18:00"
 
 	bot.HandleFunc("/find {time}", FindHandler)
-	bot.HandleFunc("/play", ConfigHandler)
-	bot.HandleFunc("/play {time}", ConfigHandler)
+	bot.HandleFunc("/play", ConfigDateHandler)
+	bot.HandleFunc("/play {date}", ConfigDateHandler)
+	bot.HandleFunc("/at", ConfigTimeHandler)
+	bot.HandleFunc("/at {time}", ConfigTimeHandler)
+	bot.HandleFunc("/when", ConfigShowHandler)
 
 	go autoReserve(bot);
 

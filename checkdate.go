@@ -26,13 +26,15 @@ func checkDate(bro *browser.Browser, date string) (string, string) {
 	  if err != nil {
 			panic(err)
 	  }
-  
-	  if strings.TrimSpace(bro.Title()) == "Nueva Reserva" {
+	
+		title := strings.TrimSpace(bro.Title())
+
+	  if title == "Nueva Reserva" {
 			fmt.Println("Pista " + name + " libre para " + date);
   
 			return name, id;
 	  } else {
-			fmt.Println("Pista " + name + " ocupada " + date);
+			fmt.Println("Pista " + name + " ocupada " + date + " ("+ title +")");
 	  }
 	}
   
