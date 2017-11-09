@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 	"os"
-	"github.com/headzoo/surf/browser"
 	"github.com/yanzay/tbot"
 	"fmt"
+	"github.com/headzoo/surf/browser"
 )
 
 var (
@@ -36,6 +36,7 @@ func main() {
 	bot.HandleFunc("/at {time}", ConfigTimeHandler)
 	bot.HandleFunc("/when", ConfigShowHandler)
 	bot.HandleFunc("/rsvp", ReservationHandler)
+	bot.HandleFunc("/money", BalanceHandler)
 
 	go autoReserve(bot);
 
