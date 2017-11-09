@@ -6,7 +6,7 @@ import (
 	"strconv"
 )
 
-func prepareDate(dayOfWeek string, hour string) (time.Time) {
+func nextAvailableDate(dayOfWeek string, hour string) (time.Time) {
 	date := time.Now()
 	for date.Weekday() != time.Monday {
 		date = date.AddDate(0, 0, 1)
@@ -22,17 +22,13 @@ func prepareDate(dayOfWeek string, hour string) (time.Time) {
 	return date
 }
 
-func nextDate(dayName string, hourString string) (time.Time) {
+func nextDateForSchedule(dayName string, hourString string) (time.Time) {
 	hourMinute := strings.Split(hourString, ":")
 	hour, _ := strconv.Atoi(hourMinute[0])
 	minute, _ := strconv.Atoi(hourMinute[1])
 
 	date := time.Now()
 	date = date.AddDate(0, 0, 6)
-
-	for date.Weekday() != time.Monday {
-		date = date.AddDate(0, 0, 1)
-	}
 
 	for date.Weekday().String() != dayOfWeek {
 		date = date.AddDate(0, 0, 1)

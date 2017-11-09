@@ -30,24 +30,24 @@ func autoReserve(server *tbot.Server) {
 
 		if chatId != 0 {
 			msg := "Hi there, it's time!\n"
-			msg += "I'm going to reserve for next " + dayOfWeek + " ("+ newAvailableDate.Format("2006-01-02") +")"
+			msg += "I'm going to reserve for next "+ dayOfWeek +" ("+ newAvailableDate.Format("2006-01-02") +")"
 
 			server.Send(chatId, msg);
 		}
 
 		bro = login();
-		date, _ = time.Parse("2006-01-02 15:04", newAvailableDate.Format("2006-01-02") + " " + hourToPlay)
+		date, _ = time.Parse("2006-01-02 15:04", newAvailableDate.Format("2006-01-02") +" "+ hourToPlay)
 
 		for _, timeRange := range TimesRanges {
 			rdate := date.Add(timeRange)
 
 			reserveTimeStr := rdate.Format("15:04")
-			startMessage := "I'm trying to reserve for "+ reserveTimeStr + "...";
+			startMessage := "I'm trying to reserve for "+ reserveTimeStr +"...";
 
 			fmt.Println(startMessage);
 			if chatId != 0 {
 				server.Send(chatId, startMessage);
-			}
+      }
 
 			reserveDateStr := rdate.Format("02-01-2006 15:04")
 			resultMessage, resultCode := reserve(bro, reserveDateStr)
@@ -57,7 +57,7 @@ func autoReserve(server *tbot.Server) {
 				server.Send(chatId, resultMessage);
 
 				if resultCode == 0 {
-					server.Send(chatId, "Enjoy!! and remember to add the "+ reserveDateStr + " to your calendar!");
+					server.Send(chatId, "Enjoy!! and remember to add the "+ reserveDateStr +" to your calendar!");
 				}
 			}
 

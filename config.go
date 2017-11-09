@@ -57,11 +57,11 @@ func ConfigShowHandler(message *tbot.Message) {
   // store latest message as a global (OMG!)
   chatId = message.ChatID;
 
-  ndate := nextDate(dayOfWeek, hourToPlay);
+  ndate := nextDateForSchedule(dayOfWeek, hourToPlay);
   tdate := ndate.AddDate(0, 0, -7);
 
   msgs := []string {
-    "I'll will reserve for "+ dayOfWeek +"s at "+ hourToPlay +". Next available date is "+ ndate.Format("02-01-2006") +".",
+    "I'll will reserve for "+ dayOfWeek +"s at "+ hourToPlay +". Next date available for schedule is "+ ndate.Format("02-01-2006") +".",
     "And don't worry, I'll automatically perform the reservation on "+ tdate.Format("02-01-2006") +"'s night",
   }
 
