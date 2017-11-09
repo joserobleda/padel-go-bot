@@ -19,7 +19,7 @@ func autoReserve(server *tbot.Server) {
 		newAvailableDay := newAvailableDate.Weekday().String();
 
 		if (newAvailableDay != dayOfWeek) {
-			fmt.Println("Tracks are not ready yet for next " + dayOfWeek)
+			// fmt.Println("Tracks are not ready yet for next " + dayOfWeek)
 			continue
 		}
 
