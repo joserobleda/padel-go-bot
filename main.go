@@ -37,6 +37,7 @@ func main() {
 	bot.HandleFunc("/money", BalanceHandler)
 
 	go autoReserve(bot);
+	go autoReminder(bot);
 
 	// Start listening for messages
 	err = bot.ListenAndServe()
