@@ -35,6 +35,7 @@ func main() {
 	bot.HandleFunc("/at", ConfigTimeHandler)
 	bot.HandleFunc("/at {time}", ConfigTimeHandler)
 	bot.HandleFunc("/when", ConfigShowHandler)
+	bot.HandleFunc("/rsvp", ReservationHandler)
 
 	go autoReserve(bot);
 
