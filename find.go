@@ -20,6 +20,7 @@ func FindHandler(message *tbot.Message) {
   message.Reply("Looking for track on next " + day + " at " + hour + "...");
 
   date := nextAvailableDate(day, hour).Format("02-01-2006 15:04");
+  bro := login("find")
   name, resource := checkDate(bro, date)
 
   if resource == "" {

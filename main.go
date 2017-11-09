@@ -3,13 +3,11 @@ package main
 import (
 	"log"
 	"os"
-	"github.com/yanzay/tbot"
 	"fmt"
-	"github.com/headzoo/surf/browser"
+	"github.com/yanzay/tbot"
 )
 
 var (
-	bro *browser.Browser
 	dayOfWeek string
 	hourToPlay string
 	chatId int64
@@ -25,7 +23,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	bro = login("initial")
+	login("initial")
 	dayOfWeek = "Monday"
 	hourToPlay = "18:00"
 
