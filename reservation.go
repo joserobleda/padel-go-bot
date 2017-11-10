@@ -42,13 +42,17 @@ type Reservation struct {
 }
 
 func getLatestActiveReservation() (error, Reservation) {
-  rsvp := getLatestReservation();
+  rsvps := getReservations();
 
-  if (rsvp.status == "Anulada") {
-    return errors.New("No active reservations"), Reservation{};
+  for _, rsvp := range rsvps {
+    if rsvp.status == "Anulada" {
+      continue;
+    }
+
+    return nil, rsvp;
   }
 
-  return nil, rsvp;
+  return errors.New("No active reservations"), Reservation{};
 }
 
 func getLatestReservation() Reservation {
