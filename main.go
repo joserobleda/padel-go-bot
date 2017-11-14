@@ -1,16 +1,17 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
-	"fmt"
+
 	"github.com/yanzay/tbot"
 )
 
 var (
-	dayOfWeek string
+	dayOfWeek  string
 	hourToPlay string
-	chatId int64
+	chatId     int64
 )
 
 func main() {
@@ -36,8 +37,8 @@ func main() {
 	bot.HandleFunc("/rsvp", ReservationHandler)
 	bot.HandleFunc("/money", BalanceHandler)
 
-	go autoReserve(bot);
-	go autoReminder(bot);
+	go autoReserve(bot)
+	go autoReminder(bot)
 
 	// Start listening for messages
 	err = bot.ListenAndServe()

@@ -1,41 +1,58 @@
 package main
 
 import (
-  "fmt"
-  "os"
-  "log"
-  "github.com/headzoo/surf"
-  "github.com/headzoo/surf/browser"
-  "github.com/headzoo/surf/agent"
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/headzoo/surf"
+	"github.com/headzoo/surf/agent"
+	"github.com/headzoo/surf/browser"
+)
+
+var (
+	bow *browser.Browser
 )
 
 func login(reason string) *browser.Browser {
-	bow := surf.NewBrowser()
-  bow.SetUserAgent(agent.Chrome())
+	if nil == bow {
+		bow = surf.NewBrowser()
+	}
 
-  err := bow.Open("https://canaldeisabel.padelclick.com/customer/login")
-  if err != nil {
-  	panic(err)
-  }
+	bow.SetUserAgent(agent.Chrome())
 
-  username := os.Getenv("LOGIN")
-  pass := os.Getenv("PASSWORD")
+	err := bow.Open("https://canaldeisabel.padelclick.com/customer/login")
+	if err != nil {
+		panic(err)
+	}
 
-  fmt.Println("Login with username: " + username + " ["+ reason +"]");
+	div := bow.Dom().Find(".c-login-user .c-login-user__text")
 
-  // Log in to the site.
-  fm, _ := bow.Form("form#customerLogin")
-  fm.Input("email", username)
-  fm.Input("password", pass)
-  if fm.Submit() != nil {
-     panic(err)
-  }
+	if div.Length() == 1 {
+		fmt.Println("Logged in as " + div.Text() + " [" + reason + "]")
 
-  span := bow.Dom().Find("span.metadataSubtitle");
-  
-  if span.Length() != 1 {
-    log.Fatal("Cannot login")
-  }
+		return bow
+	}
 
-  return bow;
+	username := os.Getenv("LOGIN")
+	pass := os.Getenv("PASSWORD")
+
+	fmt.Println("Login with username: " + username + " [" + reason + "]")
+
+	// Log in to the site.
+	fm, _ := bow.Form("form#customerLogin")
+	fm.Input("email", username)
+	fm.Input("password", pass)
+	fm.Input("keepSession", "true")
+	if fm.Submit() != nil {
+		panic(err)
+	}
+
+	span := bow.Dom().Find("span.metadataSubtitle")
+
+	if span.Length() != 1 {
+		log.Fatal("Cannot login")
+	}
+
+	return bow
 }
