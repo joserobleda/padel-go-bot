@@ -29,6 +29,7 @@ func main() {
 	hourToPlay = "18:00"
 
 	bot.HandleFunc("/find {time}", FindHandler)
+	bot.HandleFunc("/reserve {date}", ReserveHandler)
 	bot.HandleFunc("/play", ConfigDateHandler)
 	bot.HandleFunc("/play {date}", ConfigDateHandler)
 	bot.HandleFunc("/at", ConfigTimeHandler)

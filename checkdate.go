@@ -13,7 +13,7 @@ type track struct {
 	name string
 }
 
-func checkDate(bro *browser.Browser, date string) (string, string) {
+func checkDate(bro *browser.Browser, date string) (string, string, string) {
 	var resources [5]track
 	resources[0] = track{"1478", "#2"}
 	resources[1] = track{"1479", "#3"}
@@ -39,7 +39,7 @@ func checkDate(bro *browser.Browser, date string) (string, string) {
 		if title == "Nueva Reserva" {
 			fmt.Println("Pista " + track.name + " libre para " + date + " (" + reservation + ")")
 
-			return track.name, track.id
+			return track.name, track.id, reservation
 		}
 
 		div := bro.Dom().Find(".error .message")
@@ -48,5 +48,5 @@ func checkDate(bro *browser.Browser, date string) (string, string) {
 		fmt.Println("Pista " + track.name + " ocupada " + date + " - " + errString + " (" + title + ")")
 	}
 
-	return "", ""
+	return "", "", ""
 }
