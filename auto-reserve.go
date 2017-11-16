@@ -24,7 +24,7 @@ func autoReserve(server *tbot.Server) {
 			continue
 		}
 
-		if currentTime != "00:00:05" {
+		if currentTime != "00:00:30" {
 			// fmt.Println(currentTime + " is not the right time to reserve")
 			continue
 		}
