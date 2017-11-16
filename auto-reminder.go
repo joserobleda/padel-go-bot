@@ -16,7 +16,7 @@ func autoReminder(server *tbot.Server) {
 		date = date.In(location)
 		currentTime := date.Format("15:04")
 
-		if currentTime != "22:45" {
+		if currentTime != "20:00" {
 			continue
 		}
 
