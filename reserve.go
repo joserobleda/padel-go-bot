@@ -37,8 +37,6 @@ func reserve(bro *browser.Browser, date string) (string, int) {
 		return "Oh! Looks like there are no available tracks! Sorry!!", 1
 	}
 
-	fmt.Println(bro.Url(), bro.StatusCode())
-
 	pdr := url.Values{}
 	pdr.Set("date", date)
 	pdr.Set("duration", "90")
