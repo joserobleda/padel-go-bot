@@ -34,6 +34,10 @@ func autoReminder(server *tbot.Server) {
 			continue
 		}
 
+		if remainingHours < 0 {
+			continue
+		}
+
 		fmt.Println("Remaining time: " + remainingTime.String())
 
 		if chatId != 0 {
