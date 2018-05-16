@@ -51,6 +51,11 @@ func reserve(bro *browser.Browser, date string) (string, int) {
 
 	paymentfm, err := bro.Form("form#paymentForm")
 	if err != nil {
+		nodes := bro.Dom().Find("span.generalError")
+		if nodes.Length() != 0 {
+			return nodes.First().Text(), 1
+		}
+
 		fmt.Println(bro.Url(), bro.Body())
 		return err.Error(), 2
 	}
