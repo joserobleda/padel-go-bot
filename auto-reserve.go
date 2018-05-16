@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
+	"strconv"
 
 	"github.com/yanzay/tbot"
 )
@@ -18,6 +19,24 @@ func autoReserve(server *tbot.Server) {
 		currentTime := date.Format("15:04:05")
 		newAvailableDate := date.AddDate(0, 0, 6)
 		newAvailableDay := newAvailableDate.Weekday().String()
+
+		checkEnoughMoneyDate := date.AddDate(0, 0, 7)
+		checkEnoughMoneyDay := checkEnoughMoneyDate.Weekday().String()
+
+		if checkEnoughMoneyDay == dayOfWeek {
+			if currentTime == "20:00:00" {
+				if chatId != 0 {
+					_, balance := getBalance()
+
+					if (balance < 20) {
+						msg := "You have " + strconv.FormatFloat(balance, 'f', 2, 64) + "€ in your padelclick wallet. Not sure I will be able to reserve!"
+						fmt.Println(msg)
+
+						server.Send(chatId, msg)
+					}
+				}
+			}
+		}
 
 		if newAvailableDay != dayOfWeek {
 			// fmt.Println("Tracks are not ready yet for next " + dayOfWeek)
