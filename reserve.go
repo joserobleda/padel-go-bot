@@ -43,7 +43,7 @@ func reserve(bro *browser.Browser, date string) (string, int) {
 	pdr.Set("idReservation", reservation)
 	pdr.Set("idResource", resource)
 	pdr.Set("paymentPending", "")
-	err := bro.PostForm("https://canaldeisabel.padelclick.com/customerZone/newReservationPost", pdr)
+	err := bro.PostForm(domain+"/customerZone/newReservationPost", pdr)
 
 	if err != nil {
 		panic(err)

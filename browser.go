@@ -21,7 +21,7 @@ func login(reason string) *browser.Browser {
 
 	bow.SetUserAgent(agent.Chrome())
 
-	err := bow.Open("https://canaldeisabel.padelclick.com/customer/login")
+	err := bow.Open(domain + "/customer/login")
 	if err != nil {
 		panic(err)
 	}

@@ -12,6 +12,7 @@ var (
 	dayOfWeek  string
 	hourToPlay string
 	chatId     int64
+	domain     string
 )
 
 func main() {
@@ -23,6 +24,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	domain = "https://canaldeisabel.padelclick.com"
 
 	login("initial")
 	dayOfWeek = "Monday"
