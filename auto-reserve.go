@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"time"
 	"strconv"
+	"time"
 
 	"github.com/yanzay/tbot"
 )
@@ -24,11 +24,11 @@ func autoReserve(server *tbot.Server) {
 		checkEnoughMoneyDay := checkEnoughMoneyDate.Weekday().String()
 
 		if checkEnoughMoneyDay == dayOfWeek {
-			if currentTime == "20:00:00" {
+			if currentTime == "19:00:00" {
 				if chatId != 0 {
 					_, balance := getBalance()
 
-					if (balance < 20) {
+					if balance < 20 {
 						msg := "You have " + strconv.FormatFloat(balance, 'f', 2, 64) + "€ in your padelclick wallet. Not sure I will be able to reserve!"
 						fmt.Println(msg)
 
