@@ -20,6 +20,8 @@ func autoReminder(server *tbot.Server) {
 			continue
 		}
 
+		fmt.Println("Checking auto-reminder...")
+
 		err, rsvp := getLatestActiveReservation()
 
 		if err != nil {
@@ -30,6 +32,8 @@ func autoReminder(server *tbot.Server) {
 		remainingTime := time.Until(rsvp.date)
 		remainingHours := remainingTime.Hours()
 
+		fmt.Println("Remaining time to next reservation: " + remainingTime.String())
+
 		if remainingHours > 24 {
 			continue
 		}
@@ -37,8 +41,6 @@ func autoReminder(server *tbot.Server) {
 		if remainingHours < 0 {
 			continue
 		}
-
-		fmt.Println("Remaining time: " + remainingTime.String())
 
 		if chatId != 0 {
 			msg := "Eeeey!!\n"
