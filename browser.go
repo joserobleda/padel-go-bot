@@ -29,7 +29,7 @@ func login(reason string) *browser.Browser {
 	div := bow.Dom().Find(".c-login-user .c-login-user__text")
 
 	if div.Length() == 1 {
-		fmt.Println("Logged in as " + div.Text() + " [" + reason + "]")
+		fmt.Println("Logged in as " + div.Text() + " at " + domain + " [" + reason + "]")
 
 		return bow
 	}

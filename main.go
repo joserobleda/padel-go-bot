@@ -16,7 +16,13 @@ var (
 )
 
 func main() {
-	fmt.Println("Starting...")
+	domain = os.Getenv("DOMAIN")
+	if len(domain) == 0 {
+		domain = "canaldeisabel.padelclick.com"
+	}
+
+	fmt.Println("Starting bot for " + domain + "...")
+
 	token := os.Getenv("TELEGRAM_TOKEN")
 
 	// Create new telegram bot server using token
@@ -24,8 +30,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	domain = "canaldeisabel.padelclick.com"
 
 	login("initial")
 	dayOfWeek = "Monday"
