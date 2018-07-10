@@ -8,18 +8,8 @@ import (
 	"github.com/headzoo/surf/browser"
 )
 
-type track struct {
-	id   string
-	name string
-}
-
 func checkDate(bro *browser.Browser, date string) (string, string, string) {
-	var resources [5]track
-	resources[2] = track{"1480", "#4"}
-	resources[4] = track{"1477", "#1"}
-	resources[1] = track{"1479", "#3"}
-	resources[0] = track{"1478", "#2"}
-	resources[3] = track{"1481", "#5"}
+	resources := getTracks()
 
 	for _, track := range resources {
 		pdr := url.Values{}
