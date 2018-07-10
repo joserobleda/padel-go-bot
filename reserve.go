@@ -40,6 +40,11 @@ func reserve(bro *browser.Browser, date string) (string, int) {
 	pdr := url.Values{}
 	pdr.Set("date", date)
 	pdr.Set("duration", "90")
+
+	if strings.Contains(domain, "ocioydeportecanal") {
+		pdr.Set("duration", "120")
+	}
+
 	pdr.Set("idReservation", reservation)
 	pdr.Set("idResource", resource)
 	pdr.Set("paymentPending", "")

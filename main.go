@@ -17,9 +17,6 @@ var (
 
 func main() {
 	domain = os.Getenv("DOMAIN")
-	if len(domain) == 0 {
-		domain = "canaldeisabel.padelclick.com"
-	}
 
 	fmt.Println("Starting bot for " + domain + "...")
 
