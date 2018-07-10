@@ -25,7 +25,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	domain = "https://canaldeisabel.padelclick.com"
+	domain = "canaldeisabel.padelclick.com"
 
 	login("initial")
 	dayOfWeek = "Monday"

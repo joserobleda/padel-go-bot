@@ -26,7 +26,7 @@ func BalanceHandler(message *tbot.Message) {
 
 func getBalance() (error, float64) {
 	bow := login("balance")
-	err := bow.Open(domain + "/customerzone/vouchers")
+	err := bow.Open("https://" + domain + "/customerzone/vouchers")
 	if err != nil {
 		panic(err)
 	}

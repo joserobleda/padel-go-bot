@@ -27,7 +27,7 @@ func checkDate(bro *browser.Browser, date string) (string, string, string) {
 		pdr.Set("localDatetime", date)
 		fmt.Println("Buscando en pista " + track.name + " para " + date)
 
-		err := bro.PostForm(domain+"/customerZone/newReservation", pdr)
+		err := bro.PostForm("https://"+domain+"/customerZone/newReservation", pdr)
 		if err != nil {
 			panic(err)
 		}
