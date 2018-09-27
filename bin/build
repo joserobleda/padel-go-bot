@@ -6,3 +6,6 @@ for GOOS in darwin linux; do
     GOOS=$GOOS GOARCH=${GOARCH} go build -o bin/"${GOOS}_${GOARCH}"
   done
 done
+
+echo "Building linux_arm"
+GOOS=linux GOARCH=arm GOARM=5 go build -o bin/linux_arm
